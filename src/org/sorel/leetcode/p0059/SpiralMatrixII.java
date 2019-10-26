@@ -1,6 +1,6 @@
 package org.sorel.leetcode.p0059;
 
-public class SpiralMatrix_II {
+public class SpiralMatrixII {
     public static int[][] generateMatrix(int n) {
         int[][] res = new int[n][n];
         int left = 0, top = 0, right = n - 1, down = n - 1;
@@ -20,7 +20,7 @@ public class SpiralMatrix_II {
                 res[down][j] = cnt++;
             }
             down--;
-            
+
             for (int i = down; i >= top; i--) {
                 res[i][left] = cnt++;
             }

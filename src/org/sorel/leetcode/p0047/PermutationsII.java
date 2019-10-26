@@ -2,7 +2,7 @@ package org.sorel.leetcode.p0047;
 
 import java.util.*;
 
-public class Permutations_II {
+public class PermutationsII {
     public List<List<Integer>> permuteUnique(int[] nums) {
         Set<List<Integer>> res = new HashSet<>();
         res.add(new ArrayList<>());
