@@ -15,14 +15,14 @@ public class MergeKSortedLists {
         ListNode head = new ListNode(-1), curr = head;
         for (ListNode node : lists) {
             if (node != null) {
-                queue.add(node);
+                queue.offer(node);
             }
         }
         while (!queue.isEmpty()) {
             curr.next = queue.poll();
             curr = curr.next;
             if (curr.next != null) {
-                queue.add(curr.next);
+                queue.offer(curr.next);
             }
         }
         return head.next;
