@@ -6,10 +6,10 @@ import java.util.List;
 
 public class WordBreakII {
     public List<String> wordBreak(String s, List<String> wordDict) {
-        return DFS(s, wordDict, new HashMap<>());
+        return dfs(s, wordDict, new HashMap<>());
     }
 
-    private List<String> DFS(String s, List<String> wordDict, HashMap<String, List<String>> map) {
+    private List<String> dfs(String s, List<String> wordDict, HashMap<String, List<String>> map) {
         if (map.containsKey(s)) {
             return map.get(s);
         }
@@ -21,7 +21,7 @@ public class WordBreakII {
         }
         for (String word : wordDict) {
             if (s.startsWith(word)) {
-                List<String> sublist = DFS(s.substring(word.length()), wordDict, map);
+                List<String> sublist = dfs(s.substring(word.length()), wordDict, map);
                 for (String sub : sublist) {
                     res.add(word + (sub.isEmpty() ? "" : " ") + sub);
                 }
