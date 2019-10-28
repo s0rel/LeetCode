@@ -2,7 +2,7 @@ package org.sorel.leetcode.p0279;
 
 import java.util.Arrays;
 
-public class PerfectSquaresII {
+public class PerfectSquares_II {
     public int numSquares(int n) {
         int[] dp = new int[n + 1];
         Arrays.fill(dp, Integer.MAX_VALUE);

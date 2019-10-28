@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class PerfectSquaresI {
+public class PerfectSquares_I {
     public int numSquares(int n) {
         List<Integer> squares = generateSquares(n);
         Queue<Integer> queue = new LinkedList<>();

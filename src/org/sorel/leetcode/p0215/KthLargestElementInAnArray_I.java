@@ -1,6 +1,6 @@
 package org.sorel.leetcode.p0215;
 
-public class KthLargestElementInAnArrayI {
+public class KthLargestElementInAnArray_I {
     public int findKthLargest(int[] nums, int k) {
         k = nums.length - k;
         int l = 0, r = nums.length - 1, idx = 0;
