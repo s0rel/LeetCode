@@ -4,6 +4,7 @@ import org.sorel.leetcode.structures.ListNode;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class MergeKSortedLists {
     public ListNode mergeKLists(ListNode[] lists) {
@@ -11,7 +12,7 @@ public class MergeKSortedLists {
             return null;
         }
 
-        PriorityQueue<ListNode> queue = new PriorityQueue<>(lists.length, Comparator.comparingInt(o -> o.val));
+        Queue<ListNode> queue = new PriorityQueue<>(lists.length, Comparator.comparingInt(o -> o.val));
         ListNode head = new ListNode(-1), curr = head;
         for (ListNode node : lists) {
             if (node != null) {
