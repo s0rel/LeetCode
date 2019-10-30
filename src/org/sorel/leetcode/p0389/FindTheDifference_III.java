@@ -1,6 +1,6 @@
 package org.sorel.leetcode.p0389;
 
-public class FindTheDifference {
+public class FindTheDifference_III {
     public char findTheDifference(String s, String t) {
         int len = t.length();
         char c = t.charAt(len - 1);

@@ -4,21 +4,23 @@ import java.util.*;
 
 public class FindKPairsWithSmallestSums {
     public List<List<Integer>> kSmallestPairs(int[] nums1, int[] nums2, int k) {
-        Queue<List<Integer>> queue = new PriorityQueue<>((a, b) -> a.get(0) + a.get(1) - b.get(0) - b.get(1));
         List<List<Integer>> res = new ArrayList<>();
-        if (nums1.length == 0 || nums2.length == 0 || k == 0) {
+        if (nums1 == null || nums1.length == 0 || nums2 == null || nums2.length == 0 || k == 0) {
             return res;
         }
-        for (int i = 0; i < nums1.length && i < k; i++) {
-            queue.offer(Arrays.asList(nums1[i], nums2[0], 0));
+
+        int len1 = nums1.length, len2 = nums2.length;
+        Queue<int[]> queue = new PriorityQueue<>(Comparator.comparingInt(o -> (nums1[o[0]] + nums2[o[1]])));
+        for (int i = 0; i < len1; i++) {
+            queue.offer(new int[]{i, 0});
         }
-        while (k-- > 0 && !queue.isEmpty()) {
-            List<Integer> curr = queue.poll();
-            res.add(Arrays.asList(curr.get(0), curr.get(1)));
-            if (curr.get(2) == nums2.length - 1) {
-                continue;
+        while (!queue.isEmpty() && k > 0) {
+            int[] pair = queue.poll();
+            if (pair[1] + 1 < len2) {
+                queue.offer(new int[]{pair[0], pair[1] + 1});
             }
-            queue.offer(Arrays.asList(curr.get(0), nums2[curr.get(2) + 1], curr.get(2) + 1));
+            res.add(Arrays.asList(nums1[pair[0]], nums2[pair[1]]));
+            k--;
         }
         return res;
     }

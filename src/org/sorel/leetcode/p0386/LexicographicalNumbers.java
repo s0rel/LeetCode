@@ -5,21 +5,25 @@ import java.util.List;
 
 public class LexicographicalNumbers {
     public List<Integer> lexicalOrder(int n) {
-        List<Integer> res = new ArrayList<>(n);
-        int curr = 1;
-        for (int i = 1; i <= n; i++) {
-            res.add(curr);
-            if (curr * 10 <= n) {
-                curr *= 10;
-            } else if (curr % 10 != 9 && curr + 1 <= n) {
-                curr++;
-            } else {
-                while ((curr / 10) % 10 == 9) {
-                    curr /= 10;
-                }
-                curr = curr / 10 + 1;
-            }
+        List<Integer> res = new ArrayList<>();
+        if (n <= 0) {
+            return res;
+        }
+
+        for (int i = 1; i < 10; ++i) {
+            dfs(i, n, res);
         }
         return res;
+    }
+
+    private void dfs(int curr, int n, List<Integer> res) {
+        if (curr <= n) {
+            res.add(curr);
+            for (int i = 0; i < 10; ++i) {
+                if (10 * curr + i <= n) {
+                    dfs(10 * curr + i, n, res);
+                }
+            }
+        }
     }
 }

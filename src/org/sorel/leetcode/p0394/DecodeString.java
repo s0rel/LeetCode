@@ -5,34 +5,32 @@ import java.util.Deque;
 
 public class DecodeString {
     public String decodeString(String s) {
-        String res = "";
+        StringBuilder res = new StringBuilder();
+        if (s == null || s.length() == 0) {
+            return res.toString();
+        }
+
         Deque<Integer> countStack = new ArrayDeque<>();
-        Deque<String> resStack = new ArrayDeque<>();
-        int idx = 0;
-        while (idx < s.length()) {
-            if (Character.isDigit(s.charAt(idx))) {
-                int count = 0;
-                while (Character.isDigit(s.charAt(idx))) {
-                    count = 10 * count + (s.charAt(idx) - '0');
-                    idx++;
+        Deque<StringBuilder> strStack = new ArrayDeque<>();
+        int cnt = 0;
+        for (char c : s.toCharArray()) {
+            if (c >= '0' && c <= '9') {
+                cnt = cnt * 10 + c - '0';
+            } else if (c == '[') {
+                countStack.push(cnt);
+                strStack.push(res);
+                res = new StringBuilder();
+                cnt = 0;
+            } else if (c == ']') {
+                StringBuilder temp = res;
+                res = strStack.pop();
+                for (cnt = countStack.pop(); cnt > 0; --cnt) {
+                    res.append(temp);
                 }
-                countStack.push(count);
-            } else if (s.charAt(idx) == '[') {
-                resStack.push(res);
-                res = "";
-                idx++;
-            } else if (s.charAt(idx) == ']') {
-                StringBuilder temp = new StringBuilder(resStack.pop());
-                int repeatTimes = countStack.pop();
-                for (int i = 0; i < repeatTimes; i++) {
-                    temp.append(res);
-                }
-                res = temp.toString();
-                idx++;
             } else {
-                res += s.charAt(idx++);
+                res.append(c);
             }
         }
-        return res;
+        return res.toString();
     }
 }

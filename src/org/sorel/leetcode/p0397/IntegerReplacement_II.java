@@ -1,8 +1,8 @@
 package org.sorel.leetcode.p0397;
 
-public class IntegerReplacement {
+public class IntegerReplacement_II {
     public int integerReplacement(int n) {
-        int c = 0;
+        int res = 0;
         while (n != 1) {
             if ((n & 1) == 0) {
                 n >>>= 1;
@@ -11,8 +11,8 @@ public class IntegerReplacement {
             } else {
                 ++n;
             }
-            ++c;
+            ++res;
         }
-        return c;
+        return res;
     }
 }

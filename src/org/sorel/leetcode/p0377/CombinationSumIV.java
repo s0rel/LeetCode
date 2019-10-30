@@ -4,15 +4,20 @@ import java.util.Arrays;
 
 public class CombinationSumIV {
     public int combinationSum4(int[] nums, int target) {
-        int[] sum = new int[target + 1];
-        sum[0] = 1;
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
         Arrays.sort(nums);
-        int len = nums.length;
+        int[] dp = new int[target + 1];
+        dp[0] = 1;
         for (int i = 1; i <= target; i++) {
-            for (int j = 0; j < len && nums[j] <= i; j++) {
-                sum[i] += sum[i - nums[j]];
+            for (int num : nums) {
+                if (i >= num) {
+                    dp[i] += dp[i - num];
+                }
             }
         }
-        return sum[target];
+        return dp[target];
     }
 }

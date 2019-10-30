@@ -444,9 +444,9 @@
  
  [371. Sum of Two Integers 两整数之和](https://leetcode.com/problems/sum-of-two-integers/)
  
- [372. Super Pow 超级次方](https://leetcode.com/problems/super-pow/)
+ [*372. Super Pow 超级次方](https://leetcode.com/problems/super-pow/)
  
- [373. Find K Pairs with Smallest Sums 查找和最小的 K 对数字](https://leetcode.com/problems/find-k-pairs-with-smallest-sums/)
+ [*373. Find K Pairs with Smallest Sums 查找和最小的 K 对数字](https://leetcode.com/problems/find-k-pairs-with-smallest-sums/)
  
  [376. Wiggle Subsequence 摆动序列](https://leetcode.com/problems/wiggle-subsequence/)
  

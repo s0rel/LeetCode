@@ -2,6 +2,10 @@ package org.sorel.leetcode.p0387;
 
 public class FirstUniqueCharacterInAString {
     public int firstUniqChar(String s) {
+        if (s == null || s.length() == 0) {
+            return -1;
+        }
+
         int[] freq = new int[26];
         for (int i = 0; i < s.length(); i++) {
             freq[s.charAt(i) - 'a']++;
