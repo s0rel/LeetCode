@@ -2,25 +2,25 @@ package org.sorel.leetcode.p0329;
 
 public class LongestIncreasingPathInAMatrix {
     public int longestIncreasingPath(int[][] matrix) {
-        if (matrix.length == 0) {
+        if (matrix == null || matrix.length == 0 || matrix[0] == null || matrix[0].length == 0) {
             return 0;
         }
 
         int m = matrix.length, n = matrix[0].length;
-        int[][] cache = new int[m][n];
-        int max = 1;
+        int[][] dp = new int[m][n];
+        int res = 1;
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                int len = dfs(matrix, i, j, m, n, cache);
-                max = Math.max(max, len);
+                int len = dfs(matrix, i, j, m, n, dp);
+                res = Math.max(res, len);
             }
         }
-        return max;
+        return res;
     }
 
-    private int dfs(int[][] matrix, int i, int j, int m, int n, int[][] cache) {
-        if (cache[i][j] != 0) {
-            return cache[i][j];
+    private int dfs(int[][] matrix, int i, int j, int m, int n, int[][] dp) {
+        if (dp[i][j] != 0) {
+            return dp[i][j];
         }
 
         int res = 1;
@@ -30,9 +30,9 @@ public class LongestIncreasingPathInAMatrix {
             if (x < 0 || x >= m || y < 0 || y >= n || matrix[x][y] <= matrix[i][j]) {
                 continue;
             }
-            res = Math.max(res, dfs(matrix, x, y, m, n, cache) + 1);
+            res = Math.max(res, dfs(matrix, x, y, m, n, dp) + 1);
         }
-        cache[i][j] = res;
+        dp[i][j] = res;
         return res;
     }
 }

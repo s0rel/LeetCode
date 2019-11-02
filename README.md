@@ -398,7 +398,7 @@
  
  [316. Remove Duplicate Letters 去除重复字母](https://leetcode.com/problems/remove-duplicate-letters/)
  
- [318. Maximum Product of Word Lengths 最大单词长度乘积](https://leetcode.com/problems/maximum-product-of-word-lengths/)
+ [*318. Maximum Product of Word Lengths 最大单词长度乘积](https://leetcode.com/problems/maximum-product-of-word-lengths/)
  
  [319. Bulb Switcher 灯泡开关](https://leetcode.com/problems/bulb-switcher/)
  

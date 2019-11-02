@@ -1,48 +1,46 @@
 package org.sorel.leetcode.p0315;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CountOfSmallerNumbersAfterSelf {
     public List<Integer> countSmaller(int[] nums) {
-        Integer[] count = new Integer[nums.length];
-        if (nums.length == 0) {
-            return Arrays.asList(count);
+        int n = nums.length;
+        int[][] arr = new int[n][2];
+        int[][] aux = new int[n][2];
+        for (int i = 0; i < n; i++) {
+            arr[i] = new int[]{nums[i], i};
         }
-
-        Node root = new Node(nums[nums.length - 1]);
-        for (int i = nums.length - 1; i >= 0; i--) {
-            count[i] = insert(root, nums[i]);
+        int[] count = new int[n];
+        sort(arr, count, 0, n - 1, aux);
+        List<Integer> res = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            res.add(count[i]);
         }
-        return Arrays.asList(count);
+        return res;
     }
 
-    static class Node {
-        int val;
-        int leftSum = 0;
-        int count = 0;
-        Node left;
-        Node right;
-
-        Node(int val) {
-            this.val = val;
+    private void sort(int[][] arr, int[] count, int l, int h, int[][] aux) {
+        if (l >= h) {
+            return;
         }
-    }
 
-    private int insert(Node node, int num) {
-        int sum = 0;
-        while (node.val != num) {
-            if (node.val > num) {
-                if (node.left == null) node.left = new Node(num);
-                node.leftSum++;
-                node = node.left;
+        int m = l + (h - l) / 2;
+        sort(arr, count, l, m, aux);
+        sort(arr, count, m + 1, h, aux);
+        if (h + 1 - l >= 0) {
+            System.arraycopy(arr, l, aux, l, h + 1 - l);
+        }
+        int i = l, j = m + 1;
+        for (int k = l; k <= h; k++) {
+            if (i == m + 1) {
+                arr[k] = aux[j++];
+            } else if (j == h + 1 || aux[i][0] <= aux[j][0]) {
+                count[aux[i][1]] += j - (m + 1);
+                arr[k] = aux[i++];
             } else {
-                sum += node.leftSum + node.count;
-                if (node.right == null) node.right = new Node(num);
-                node = node.right;
+                arr[k] = aux[j++];
             }
         }
-        node.count++;
-        return sum + node.leftSum;
     }
 }

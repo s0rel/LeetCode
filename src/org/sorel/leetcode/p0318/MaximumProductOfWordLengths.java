@@ -9,10 +9,10 @@ public class MaximumProductOfWordLengths {
         int len = words.length;
         int[] value = new int[len];
         for (int i = 0; i < len; i++) {
-            String temp = words[i];
+            String word = words[i];
             value[i] = 0;
-            for (int j = 0; j < temp.length(); j++) {
-                value[i] |= 1 << (temp.charAt(j) - 'a');
+            for (int j = 0; j < word.length(); j++) {
+                value[i] |= 1 << (word.charAt(j) - 'a');
             }
         }
         int res = 0;

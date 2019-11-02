@@ -13,24 +13,23 @@ public class RemoveDuplicateLetters {
         }
 
         Deque<Character> stack = new ArrayDeque<>();
-        int index;
         for (char c : charArray) {
-            index = c - 'a';
-            letters[index]--;
-            if (visited[index]) {
+            int idx = c - 'a';
+            letters[idx]--;
+            if (visited[idx]) {
                 continue;
             }
             while (!stack.isEmpty() && c < stack.peek() && letters[stack.peek() - 'a'] != 0) {
                 visited[stack.pop() - 'a'] = false;
             }
             stack.push(c);
-            visited[index] = true;
+            visited[idx] = true;
         }
 
         StringBuilder res = new StringBuilder();
         while (!stack.isEmpty()) {
-            res.insert(0, stack.pop());
+            res.append(stack.pop());
         }
-        return res.toString();
+        return res.reverse().toString();
     }
 }
