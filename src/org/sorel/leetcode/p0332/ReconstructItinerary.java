@@ -4,20 +4,33 @@ import java.util.*;
 
 public class ReconstructItinerary {
     public List<String> findItinerary(List<List<String>> tickets) {
-        Map<String, PriorityQueue<String>> targets = new HashMap<>();
-        for (List<String> ticket : tickets) {
-            targets.computeIfAbsent(ticket.get(0), k -> new PriorityQueue<>()).add(ticket.get(1));
+        List<String> res = new ArrayList<>();
+        if (tickets == null || tickets.size() == 0) {
+            return res;
         }
 
-        List<String> route = new ArrayList<>();
-        Deque<String> stack = new ArrayDeque<>();
-        stack.push("JFK");
-        while (!stack.isEmpty()) {
-            while (targets.containsKey(stack.peek()) && !targets.get(stack.peek()).isEmpty()) {
-                stack.push(targets.get(stack.peek()).poll());
+        Map<String, PriorityQueue<String>> map = new HashMap<>();
+        for (List<String> ticket : tickets) {
+            if (!map.containsKey(ticket.get(0))) {
+                map.put(ticket.get(0), new PriorityQueue<>());
             }
-            route.add(0, stack.pop());
+            map.get(ticket.get(0)).add(ticket.get(1));
         }
-        return route;
+
+        String curr = "JFK";
+        Deque<String> drawBack = new ArrayDeque<>();
+        for (int i = 0; i < tickets.size(); i++) {
+            while (!map.containsKey(curr) || map.get(curr).isEmpty()) {
+                drawBack.push(curr);
+                curr = res.remove(res.size() - 1);
+            }
+            res.add(curr);
+            curr = map.get(curr).poll();
+        }
+        res.add(curr);
+        while (!drawBack.isEmpty()) {
+            res.add(drawBack.pop());
+        }
+        return res;
     }
 }

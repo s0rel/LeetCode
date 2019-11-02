@@ -10,11 +10,7 @@ public class IntersectionOfTwoArraysII {
         Map<Integer, Integer> map = new HashMap<>();
         List<Integer> intersect = new ArrayList<>();
         for (int num : nums1) {
-            if (map.containsKey(num)) {
-                map.put(num, map.get(num) + 1);
-            } else {
-                map.put(num, 1);
-            }
+            map.put(num, map.getOrDefault(num, 0) + 1);
         }
         for (int num : nums2) {
             if (map.containsKey(num) && map.get(num) > 0) {

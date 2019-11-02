@@ -1,6 +1,6 @@
 package org.sorel.leetcode.p0343;
 
-public class IntegerBreak {
+public class IntegerBreak_I {
     public int integerBreak(int n) {
         int[] dp = new int[n + 1];
         dp[1] = 1;

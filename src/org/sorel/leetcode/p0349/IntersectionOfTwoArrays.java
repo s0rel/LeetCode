@@ -17,9 +17,9 @@ public class IntersectionOfTwoArrays {
         }
 
         int[] res = new int[intersect.size()];
-        int i = 0;
+        int cnt = 0;
         for (int num : intersect) {
-            res[i++] = num;
+            res[cnt++] = num;
         }
         return res;
     }

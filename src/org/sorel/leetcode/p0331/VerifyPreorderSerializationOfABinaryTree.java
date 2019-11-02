@@ -5,7 +5,7 @@ import java.util.Deque;
 
 public class VerifyPreorderSerializationOfABinaryTree {
     public boolean isValidSerialization(String preorder) {
-        if (preorder == null) {
+        if (preorder == null || preorder.length() == 0) {
             return false;
         }
 

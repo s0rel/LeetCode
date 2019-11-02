@@ -26,8 +26,7 @@ public class HouseRobberIII {
         if (root.right != null) {
             val += getMaxValue(root.right.left, map) + getMaxValue(root.right.right, map);
         }
-        int max = Math.max(root.val + val,
-                getMaxValue(root.left, map) + getMaxValue(root.right, map));
+        int max = Math.max(root.val + val, getMaxValue(root.left, map) + getMaxValue(root.right, map));
         map.put(root, max);
         return max;
     }
