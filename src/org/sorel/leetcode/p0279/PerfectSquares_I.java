@@ -18,8 +18,8 @@ public class PerfectSquares_I {
             level++;
             while (len-- > 0) {
                 int curr = queue.poll();
-                for (int s : squares) {
-                    int next = curr - s;
+                for (int square : squares) {
+                    int next = curr - square;
                     if (next < 0) {
                         break;
                     } else if (next == 0) {

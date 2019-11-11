@@ -3,26 +3,37 @@ package org.sorel.leetcode.p0257;
 import org.sorel.leetcode.structures.TreeNode;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class BinaryTreePaths {
     public List<String> binaryTreePaths(TreeNode root) {
         List<String> res = new ArrayList<>();
-        if (root != null) {
-            searchBT(root, "", res);
+        Queue<TreeNode> nodeQueue = new LinkedList<>();
+        Queue<String> strQueue = new LinkedList<>();
+        if (root == null) {
+            return res;
+        }
+
+        nodeQueue.offer(root);
+        strQueue.offer("");
+        while (!nodeQueue.isEmpty()) {
+            TreeNode curNode = nodeQueue.poll();
+            String curStr = strQueue.poll();
+
+            if (curNode.left == null && curNode.right == null) {
+                res.add(curStr + curNode.val);
+            }
+            if (curNode.left != null) {
+                nodeQueue.offer(curNode.left);
+                strQueue.offer(curStr + curNode.val + "->");
+            }
+            if (curNode.right != null) {
+                nodeQueue.offer(curNode.right);
+                strQueue.offer(curStr + curNode.val + "->");
+            }
         }
         return res;
-    }
-
-    private void searchBT(TreeNode root, String path, List<String> res) {
-        if (root.left == null && root.right == null) {
-            res.add(path + root.val);
-        }
-        if (root.left != null) {
-            searchBT(root.left, path + root.val + "->", res);
-        }
-        if (root.right != null) {
-            searchBT(root.right, path + root.val + "->", res);
-        }
     }
 }

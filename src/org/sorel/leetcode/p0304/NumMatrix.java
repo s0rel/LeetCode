@@ -4,26 +4,24 @@ public class NumMatrix {
     private int[][] dp;
 
     public NumMatrix(int[][] matrix) {
-        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+        if (matrix == null || matrix.length == 0 || matrix[0] == null || matrix[0].length == 0) {
             return;
         }
 
-        int m = matrix.length, n = matrix[0].length;
-        dp = new int[m + 1][n + 1];
-        for (int i = 1; i <= m; i++) {
-            for (int j = 1; j <= n; j++) {
-                dp[i][j] = dp[i - 1][j] + dp[i][j - 1] - dp[i - 1][j - 1] + matrix[i - 1][j - 1];
+        int row = matrix.length, col = matrix[0].length;
+        dp = new int[row][col + 1];
+        for (int x = 0; x < row; x++) {
+            for (int y = 0; y < col; y++) {
+                dp[x][y + 1] = dp[x][y] + matrix[x][y];
             }
         }
     }
 
     public int sumRegion(int row1, int col1, int row2, int col2) {
-        int iMin = Math.min(row1, row2);
-        int iMax = Math.max(row1, row2);
-
-        int jMin = Math.min(col1, col2);
-        int jMax = Math.max(col1, col2);
-
-        return dp[iMax + 1][jMax + 1] - dp[iMax + 1][jMin] - dp[iMin][jMax + 1] + dp[iMin][jMin];
+        int sum = 0;
+        for (int row = row1; row <= row2; row++) {
+            sum += dp[row][col2 + 1] - dp[row][col1];
+        }
+        return sum;
     }
 }

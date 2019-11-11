@@ -13,12 +13,12 @@ public class SlidingWindowMaximum {
         int[] res = new int[len - k + 1];
         Queue<Integer> queue = new PriorityQueue<>((i1, i2) -> Integer.compare(i2, i1));
         for (int i = 0; i < k; i++) {
-            queue.add(nums[i]);
+            queue.offer(nums[i]);
         }
         res[0] = queue.peek();
         for (int i = k; i < len; i++) {
             queue.remove(nums[i - k]);
-            queue.add(nums[i]);
+            queue.offer(nums[i]);
             res[i - k + 1] = queue.peek();
         }
         return res;

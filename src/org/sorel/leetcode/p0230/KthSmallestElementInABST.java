@@ -16,7 +16,9 @@ public class KthSmallestElementInABST {
                 curr = curr.left;
             } else {
                 TreeNode node = stack.pop();
-                if (++cnt == k) return node.val;
+                if (++cnt == k) {
+                    return node.val;
+                }
                 curr = node.right;
             }
         }

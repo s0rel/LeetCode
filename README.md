@@ -366,7 +366,7 @@
  
  [279. Perfect Squares 完全平方数](https://leetcode.com/problems/perfect-squares/)
  
- [282. Expression Add Operators 给表达式添加运算符](https://leetcode.com/problems/expression-add-operators/) 
+ [*282. Expression Add Operators 给表达式添加运算符](https://leetcode.com/problems/expression-add-operators/) 
  
  [283. Move Zeroes 移动零](https://leetcode.com/problems/move-zeroes/)
  

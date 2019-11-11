@@ -2,15 +2,15 @@ package org.sorel.leetcode.p0242;
 
 public class ValidAnagram {
     public boolean isAnagram(String s, String t) {
-        int[] cnts = new int[26];
+        int[] letters = new int[26];
         for (char c : s.toCharArray()) {
-            cnts[c - 'a']++;
+            letters[c - 'a']++;
         }
         for (char c : t.toCharArray()) {
-            cnts[c - 'a']--;
+            letters[c - 'a']--;
         }
 
-        for (int cnt : cnts) {
+        for (int cnt : letters) {
             if (cnt != 0) {
                 return false;
             }

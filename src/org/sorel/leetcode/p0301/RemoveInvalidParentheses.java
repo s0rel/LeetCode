@@ -27,10 +27,10 @@ public class RemoveInvalidParentheses {
                 if (s.charAt(i) != '(' && s.charAt(i) != ')') {
                     continue;
                 }
-                String t = s.substring(0, i) + s.substring(i + 1);
-                if (!visited.contains(t)) {
-                    queue.add(t);
-                    visited.add(t);
+                String temp = s.substring(0, i) + s.substring(i + 1);
+                if (!visited.contains(temp)) {
+                    queue.add(temp);
+                    visited.add(temp);
                 }
             }
         }
