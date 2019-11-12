@@ -7,7 +7,7 @@ import java.util.Queue;
 
 public class SymmetricTree_II {
     public boolean isSymmetric(TreeNode root) {
-        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        Queue<TreeNode> queue = new LinkedList<>();
         if (root == null) {
             return true;
         }

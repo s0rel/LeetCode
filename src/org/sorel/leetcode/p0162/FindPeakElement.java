@@ -2,7 +2,7 @@ package org.sorel.leetcode.p0162;
 
 public class FindPeakElement {
     public int findPeakElement(int[] nums) {
-        if (nums.length == 1) {
+        if (nums == null || nums.length == 1) {
             return 0;
         }
 

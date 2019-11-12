@@ -16,13 +16,13 @@ public class BinaryTreeZigzagLevelOrderTraversal {
 
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
-        boolean zigzag = false;
+        boolean flag = false;
         while (!queue.isEmpty()) {
             List<Integer> level = new ArrayList<>();
             int cnt = queue.size();
             for (int i = 0; i < cnt; i++) {
                 TreeNode node = queue.poll();
-                if (zigzag) {
+                if (flag) {
                     level.add(0, node.val);
                 } else {
                     level.add(node.val);
@@ -35,7 +35,7 @@ public class BinaryTreeZigzagLevelOrderTraversal {
                 }
             }
             res.add(level);
-            zigzag = !zigzag;
+            flag = !flag;
         }
         return res;
     }

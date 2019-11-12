@@ -2,7 +2,7 @@ package org.sorel.leetcode.p0174;
 
 public class DungeonGame {
     public int calculateMinimumHP(int[][] dungeon) {
-        if (dungeon == null || dungeon.length == 0 || dungeon[0].length == 0) {
+        if (dungeon == null || dungeon.length == 0 || dungeon[0] == null || dungeon[0].length == 0) {
             return 0;
         }
 

@@ -3,13 +3,14 @@ package org.sorel.leetcode.p0140;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class WordBreakII {
     public List<String> wordBreak(String s, List<String> wordDict) {
         return dfs(s, wordDict, new HashMap<>());
     }
 
-    private List<String> dfs(String s, List<String> wordDict, HashMap<String, List<String>> map) {
+    private List<String> dfs(String s, List<String> wordDict, Map<String, List<String>> map) {
         if (map.containsKey(s)) {
             return map.get(s);
         }
