@@ -10,16 +10,16 @@ public class ReverseLinkedListII {
 
         ListNode dummy = new ListNode(-1);
         dummy.next = head;
-        ListNode pre = dummy;
+        ListNode prev = dummy;
         for (int i = 0; i < m - 1; i++) {
-            pre = pre.next;
+            prev = prev.next;
         }
 
-        ListNode start = pre.next, then = start.next;
+        ListNode start = prev.next, then = start.next;
         for (int i = 0; i < n - m; i++) {
             start.next = then.next;
-            then.next = pre.next;
-            pre.next = then;
+            then.next = prev.next;
+            prev.next = then;
             then = start.next;
         }
         return dummy.next;

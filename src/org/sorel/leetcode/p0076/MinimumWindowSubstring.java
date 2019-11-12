@@ -41,7 +41,6 @@ public class MinimumWindowSubstring {
         if (minLen > s.length()) {
             return "";
         }
-
         return s.substring(minLeft, minLeft + minLen);
     }
 }

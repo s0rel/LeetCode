@@ -5,7 +5,7 @@ import java.util.Deque;
 
 public class MaximalRectangle {
     public int maximalRectangle(char[][] matrix) {
-        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+        if (matrix == null || matrix.length == 0 || matrix[0] == null || matrix[0].length == 0) {
             return 0;
         }
 
@@ -13,11 +13,11 @@ public class MaximalRectangle {
         int[] h = new int[col + 1];
         h[col] = 0;
         int res = 0;
-        for (char[] chars : matrix) {
+        for (char[] charArray : matrix) {
             Deque<Integer> stack = new ArrayDeque<>();
             for (int i = 0; i < col + 1; i++) {
                 if (i < col) {
-                    if (chars[i] == '1') {
+                    if (charArray[i] == '1') {
                         h[i] += 1;
                     } else {
                         h[i] = 0;
