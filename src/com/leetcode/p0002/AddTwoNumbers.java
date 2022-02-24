@@ -4,8 +4,10 @@ import com.leetcode.structures.ListNode;
 
 public class AddTwoNumbers {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode head = new ListNode(-1), curr = head;
+        ListNode head = new ListNode(-1);
+        ListNode curr = head;
         int flag = 0;
+
         while (l1 != null || l2 != null) {
             int v1 = (l1 == null) ? 0 : l1.val;
             int v2 = (l2 == null) ? 0 : l2.val;
@@ -17,7 +19,8 @@ public class AddTwoNumbers {
             l2 = (l2 == null) ? l2 : l2.next;
         }
 
-        if (flag == 1) { // 处理最高位有进位的情况
+        // 处理最高位有进位的情况
+        if (flag == 1) {
             curr.next = new ListNode(1);
         }
         return head.next;
