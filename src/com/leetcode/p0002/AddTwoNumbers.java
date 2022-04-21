@@ -9,8 +9,8 @@ public class AddTwoNumbers {
         int flag = 0;
 
         while (l1 != null || l2 != null) {
-            int v1 = (l1 == null) ? 0 : l1.val;
-            int v2 = (l2 == null) ? 0 : l2.val;
+            int v1 = (l1 != null) ? l1.val : 0;
+            int v2 = (l2 != null) ? l2.val : 0;
             int sum = v1 + v2 + flag;
             flag = sum / 10;
             curr.next = new ListNode(sum % 10);
