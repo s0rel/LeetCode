@@ -6,7 +6,7 @@
  
  [3. Longest Substring Without Repeating Characters 无重复字符的最长子串](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
  
- [*4. Median of Two Sorted Arrays 寻找两个有序数组的中位数](https://leetcode.com/problems/median-of-two-sorted-arrays/)
+ [4. Median of Two Sorted Arrays 寻找两个有序数组的中位数](https://leetcode.com/problems/median-of-two-sorted-arrays/)
  
  [5. Longest Palindromic Substring 最长回文子串](https://leetcode.com/problems/longest-palindromic-substring/)
  
