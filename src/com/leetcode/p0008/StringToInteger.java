@@ -7,7 +7,9 @@ public class StringToInteger {
         }
 
         String s = str.trim();
-        int pos = 0, res = 0, len = s.length();
+        int pos = 0;
+        int res = 0;
+        int len = s.length();
         boolean flag = (s.charAt(0) == '-'); // 负数标记
         if (s.charAt(0) == '+' || s.charAt(0) == '-') {
             pos++;
