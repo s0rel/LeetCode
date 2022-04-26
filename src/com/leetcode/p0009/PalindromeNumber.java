@@ -5,19 +5,12 @@ public class PalindromeNumber {
         if (x < 0) {
             return false;
         }
-
-        int div = 1;
-        while (x / div >= 10) {
-            div *= 10;
-        }
-        while (x > 0) {
-            int l = x / div;
-            int r = x % 10;
-            if (l != r) {
+        String s = String.valueOf(x);
+        int len = s.length();
+        for (int l = 0, r = len - 1; l <= r; l++, r--) {
+            if (s.charAt(l) != s.charAt(r)) {
                 return false;
             }
-            x = (x % div) / 10;
-            div /= 100;
         }
         return true;
     }
