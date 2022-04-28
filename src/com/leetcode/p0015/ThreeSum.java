@@ -15,7 +15,9 @@ public class ThreeSum {
         int len = nums.length;
         for (int i = 0; i < len - 2; i++) {
             if (i == 0 || (nums[i] != nums[i - 1])) { // 这里做了一次优化，可以减少重复
-                int l = i + 1, r = len - 1, sum = 0 - nums[i];
+                int l = i + 1;
+                int r = len - 1;
+                int sum = -nums[i];
                 while (l < r) {
                     if (nums[l] + nums[r] == sum) {
                         res.add(Arrays.asList(nums[i], nums[l], nums[r]));
