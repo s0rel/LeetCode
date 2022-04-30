@@ -17,7 +17,8 @@ public class FourSum {
             if (i == 0 || nums[i] != nums[i - 1]) {
                 for (int j = i + 1; j < len - 2; j++) {
                     if (j == i + 1 || nums[j] != nums[j - 1]) {
-                        int l = j + 1, r = len - 1;
+                        int l = j + 1;
+                        int r = len - 1;
                         while (l < r) {
                             int sum = nums[i] + nums[j] + nums[l] + nums[r];
                             if (sum == target) {
