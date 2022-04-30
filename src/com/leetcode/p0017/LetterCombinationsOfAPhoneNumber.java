@@ -10,7 +10,7 @@ public class LetterCombinationsOfAPhoneNumber {
             return res;
         }
 
-        res.add(""); // 这一步很重要
+        res.add("");
         String[] mappings = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
         int len = digits.length();
         for (int i = 0; i < len; i++) {
