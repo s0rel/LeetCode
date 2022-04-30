@@ -8,13 +8,17 @@ public class ThreeSumClosest {
         Arrays.sort(nums);
         int len = nums.length;
         for (int i = 0; i < len - 2; i++) {
-            int l = i + 1, r = len - 1;
+            int l = i + 1;
+            int r = len - 1;
             while (l < r) {
                 int sum = nums[i] + nums[l] + nums[r];
                 if (Math.abs(sum - target) < Math.abs(res - target)) {
                     res = sum;
                 }
-                if (sum > target) {
+
+                if (sum == target) {
+                    return res;
+                } else if (sum > target) {
                     r--;
                 } else {
                     l++;
