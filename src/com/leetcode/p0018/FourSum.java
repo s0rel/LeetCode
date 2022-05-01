@@ -6,38 +6,45 @@ import java.util.List;
 
 public class FourSum {
     public List<List<Integer>> fourSum(int[] nums, int target) {
-        List<List<Integer>> res = new ArrayList<>();
-        if (nums == null || nums.length == 0) {
-            return res;
-        }
-
         Arrays.sort(nums);
+        return kSum(nums, 0, 4, target);
+    }
+
+    private List<List<Integer>> kSum(int[] nums, int start, int k, int target) {
         int len = nums.length;
-        for (int i = 0; i < len - 3; i++) {
-            if (i == 0 || nums[i] != nums[i - 1]) {
-                for (int j = i + 1; j < len - 2; j++) {
-                    if (j == i + 1 || nums[j] != nums[j - 1]) {
-                        int l = j + 1;
-                        int r = len - 1;
-                        while (l < r) {
-                            int sum = nums[i] + nums[j] + nums[l] + nums[r];
-                            if (sum == target) {
-                                res.add(Arrays.asList(nums[i], nums[j], nums[l], nums[r]));
-                                while (l + 1 < r && nums[l] == nums[l + 1]) {
-                                    l++;
-                                }
-                                while (r - 1 > l && nums[r] == nums[r - 1]) {
-                                    r--;
-                                }
-                                l++;
-                                r--;
-                            } else if (sum > target) {
-                                r--;
-                            } else {
-                                l++;
-                            }
-                        }
+        List<List<Integer>> res = new ArrayList<>();
+        if (k == 2) {
+            int l = start;
+            int r = len - 1;
+            while (l < r) {
+                int sum = nums[l] + nums[r];
+                if (sum == target) {
+                    List<Integer> path = new ArrayList<>();
+                    path.add(nums[l]);
+                    path.add(nums[r]);
+                    res.add(path);
+                    while (l < r && nums[l] == nums[l + 1]) {
+                        l++;
                     }
+                    while (l < r && nums[r] == nums[r - 1]) {
+                        r--;
+                    }
+                    l++;
+                    r--;
+                } else if (sum < target) {
+                    l++;
+                } else {
+                    r--;
+                }
+            }
+        } else {
+            for (int i = start; i < len - (k - 1); i++) {
+                if (i == start || nums[i] != nums[i - 1]) {
+                    List<List<Integer>> temp = kSum(nums, i + 1, k - 1, target - nums[i]);
+                    for (List<Integer> t : temp) {
+                        t.add(0, nums[i]);
+                    }
+                    res.addAll(temp);
                 }
             }
         }
