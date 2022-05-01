@@ -8,21 +8,22 @@ public class RemoveNthNodeFromEndOfList {
             return null;
         }
 
-        ListNode fast = head, slow = head;
-        while (fast != null && n > 0) {
-            fast = fast.next;
+        ListNode r = head;
+        ListNode l = head;
+        while (r != null && n > 0) {
+            r = r.next;
             n--;
         }
 
-        if (fast == null) {
+        if (r == null) {
             return head.next;
         }
 
-        while (fast.next != null) {
-            fast = fast.next;
-            slow = slow.next;
+        while (r.next != null) {
+            r = r.next;
+            l = l.next;
         }
-        slow.next = slow.next.next;
+        l.next = l.next.next;
         return head;
     }
 }
