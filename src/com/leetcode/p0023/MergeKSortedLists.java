@@ -12,8 +12,9 @@ public class MergeKSortedLists {
             return null;
         }
 
-        Queue<ListNode> queue = new PriorityQueue<>(lists.length, Comparator.comparingInt(o -> o.val));
-        ListNode head = new ListNode(-1), curr = head;
+        Queue<ListNode> queue = new PriorityQueue<>(lists.length, Comparator.comparingInt(node -> node.val));
+        ListNode head = new ListNode(-1);
+        ListNode curr = head;
         for (ListNode node : lists) {
             if (node != null) {
                 queue.offer(node);
