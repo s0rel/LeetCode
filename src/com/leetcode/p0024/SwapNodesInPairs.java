@@ -8,7 +8,8 @@ public class SwapNodesInPairs {
         dummy.next = head;
         ListNode prev = dummy;
         while (prev.next != null && prev.next.next != null) {
-            ListNode node1 = prev.next, node2 = prev.next.next;
+            ListNode node1 = prev.next;
+            ListNode node2 = prev.next.next;
             node1.next = node2.next;
             node2.next = node1;
             prev.next = node2;
