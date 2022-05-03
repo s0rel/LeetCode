@@ -4,8 +4,11 @@ import com.leetcode.structures.ListNode;
 
 public class ReverseNodesInKGroup {
     public ListNode reverseKGroup(ListNode head, int k) {
-        ListNode dummy = new ListNode(-1), prev = dummy, curr = dummy;
+        ListNode dummy = new ListNode(-1);
+        ListNode prev = dummy;
+        ListNode curr = dummy;
         dummy.next = head;
+
         int len = 0;
         while (curr.next != null) {
             len++;
