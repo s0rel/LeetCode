@@ -55,7 +55,9 @@
  [27. Remove Element 移除元素](https://leetcode.com/problems/remove-element/)
 
  [28. Implement strStr() 实现 strStr()](https://leetcode.com/problems/implement-strstr/)
- 
+
+ [29. Divide Two Integers](https://leetcode.com/problems/divide-two-integers/) 
+
  [*32. Longest Valid Parentheses 最长有效括号](https://leetcode.com/problems/longest-valid-parentheses/)
  
  [33. Search in Rotated Sorted Array 搜索旋转排序数组](https://leetcode.com/problems/search-in-rotated-sorted-array/)
