@@ -18,7 +18,7 @@
  
  [9. Palindrome Number 回文数](https://leetcode.com/problems/palindrome-number/)
  
- [*10、Regular Expression Matching](https://leetcode.com/problems/regular-expression-matching/)
+ [*10、Regular Expression Matching 正则表达式匹配](https://leetcode.com/problems/regular-expression-matching/)
 
  [11. Container With Most Water 盛最多水的容器](https://leetcode.com/problems/container-with-most-water/)
  
@@ -56,7 +56,9 @@
 
  [28. Implement strStr() 实现 strStr()](https://leetcode.com/problems/implement-strstr/)
 
- [29. Divide Two Integers](https://leetcode.com/problems/divide-two-integers/) 
+ [29. Divide Two Integers 两数相除](https://leetcode.com/problems/divide-two-integers/) 
+
+ [30. Substring with Concatenation of All Words 串联所有单词的子串](https://leetcode.com/problems/substring-with-concatenation-of-all-words/)
 
  [*32. Longest Valid Parentheses 最长有效括号](https://leetcode.com/problems/longest-valid-parentheses/)
  
