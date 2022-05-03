@@ -6,14 +6,17 @@ public class RemoveDuplicatesFromSortedArray {
             return 0;
         }
 
-        int prev = 0, curr = 0, len = nums.length;
-        while (curr < len) {
-            if (nums[prev] == nums[curr]) {
-                curr++;
+        int l = 0;
+        int r = 0;
+        int len = nums.length;
+        while (r < len) {
+            if (nums[l] == nums[r]) {
+                r++;
             } else {
-                nums[++prev] = nums[curr++];
+                // 左边的指针先自增用于存储新元素，然后右边的指针自增
+                nums[++l] = nums[r++];
             }
         }
-        return prev + 1;
+        return l + 1;
     }
 }
