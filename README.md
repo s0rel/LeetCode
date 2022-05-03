@@ -53,6 +53,8 @@
  [26. Remove Duplicates from Sorted Array 删除排序数组中的重复项](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
  
  [27. Remove Element 移除元素](https://leetcode.com/problems/remove-element/)
+
+ [28. Implement strStr() 实现 strStr()](https://leetcode.com/problems/implement-strstr/)
  
  [*32. Longest Valid Parentheses 最长有效括号](https://leetcode.com/problems/longest-valid-parentheses/)
  
