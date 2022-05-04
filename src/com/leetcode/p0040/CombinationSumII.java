@@ -13,18 +13,21 @@ public class CombinationSumII {
     }
 
     private void backtracking(int[] candidates, int target, int idx, List<Integer> curr, List<List<Integer>> res) {
-        if (target > 0) {
+        if (target == 0) {
+            res.add(new ArrayList<>(curr));
+        } else if (target > 0) {
             for (int i = idx; i < candidates.length; i++) {
+                if (candidates[i] > target) {
+                    return;
+                }
                 // 避免使用重复项
-                if (candidates[i] > target || (i > idx && candidates[i - 1] == candidates[i])) {
-                    continue; // 这里只能是 continue，而不能是 break
+                if ((i > idx && candidates[i] == candidates[i - 1])) {
+                    continue;
                 }
                 curr.add(candidates[i]);
                 backtracking(candidates, target - candidates[i], i + 1, curr, res); // 这里传的是 i + 1
                 curr.remove(curr.size() - 1);
             }
-        } else if (target == 0) {
-            res.add(new ArrayList<>(curr));
         }
     }
 }
