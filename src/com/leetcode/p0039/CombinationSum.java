@@ -13,17 +13,19 @@ public class CombinationSum {
     }
 
     private void backtracking(int[] candidates, int target, int idx, List<Integer> curr, List<List<Integer>> res) {
-        if (target > 0) {
+        if (target == 0) {
+            // 这里需要新建一个 ArrayList 对象
+            res.add(new ArrayList<>(curr));
+        } else if (target > 0) {
             for (int i = idx; i < candidates.length; i++) {
                 if (candidates[i] > target) {
-                    break;
+                    return;
                 }
                 curr.add(candidates[i]);
-                backtracking(candidates, target - candidates[i], i, curr, res); // 这里传的是 i
+                // 由于数组内的元素可以重复使用，所以这里传的是 i
+                backtracking(candidates, target - candidates[i], i, curr, res);
                 curr.remove(curr.size() - 1);
             }
-        } else if (target == 0) {
-            res.add(new ArrayList<>(curr));
         }
     }
 }
