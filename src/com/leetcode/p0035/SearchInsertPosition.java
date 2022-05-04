@@ -2,22 +2,18 @@ package com.leetcode.p0035;
 
 public class SearchInsertPosition {
     public int searchInsert(int[] nums, int target) {
-        if (nums == null || nums.length == 0 || nums[0] > target) { // 不能取等号
-            return 0;
-        }
-        if (nums[nums.length - 1] < target) { // 不能取等号
-            return nums.length;
-        }
-
-        int l = 0, r = nums.length - 1;
-        while (l < r) {
-            int m = l + (r - l) / 2;
-            if (nums[m] < target) {
-                l = m + 1;
+        int l = 0;
+        int r = nums.length - 1;
+        while (l <= r) {
+            int m = (l + r) / 2;
+            if (nums[m] == target) {
+                return m;
+            } else if (nums[m] > target) {
+                r = m - 1;
             } else {
-                r = m;
+                l = m + 1;
             }
         }
-        return r;
+        return l;
     }
 }
