@@ -92,7 +92,7 @@
  
  [55. Jump Game 跳跃游戏](https://leetcode.com/problems/jump-game/)
  
- [56. Merge Intervals 合并区间](https://leetcode.com/problems/merge-intervals/)
+ [*56. Merge Intervals 合并区间](https://leetcode.com/problems/merge-intervals/)
  
  [58. Length of Last Word 最后一个单词的长度](https://leetcode.com/problems/length-of-last-word/)
  
