@@ -2,13 +2,11 @@ package com.leetcode.p0055;
 
 public class JumpGame {
     public boolean canJump(int[] nums) {
-        int max = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (i > max) {
-                return false;
-            }
-            max = Math.max(nums[i] + i, max);
+        int len = nums.length;
+        int idx = 0;
+        for (int reach = 0; idx < len && idx <= reach; idx++) {
+            reach = Math.max(idx + nums[idx], reach);
         }
-        return true;
+        return idx == len;
     }
 }
