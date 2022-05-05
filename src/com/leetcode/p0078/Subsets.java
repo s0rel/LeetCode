@@ -10,12 +10,12 @@ public class Subsets {
         return res;
     }
 
-    private void backtracking(int[] nums, int idx, List<Integer> list, List<List<Integer>> res) {
-        res.add(new ArrayList<>(list));
+    private void backtracking(int[] nums, int idx, List<Integer> curr, List<List<Integer>> res) {
+        res.add(new ArrayList<>(curr));
         for (int i = idx; i < nums.length; i++) {
-            list.add(nums[i]);
-            backtracking(nums, i + 1, list, res);
-            list.remove(list.size() - 1);
+            curr.add(nums[i]);
+            backtracking(nums, i + 1, curr, res);
+            curr.remove(curr.size() - 1);
         }
     }
 }
