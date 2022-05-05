@@ -1,8 +1,5 @@
 package com.leetcode.p0064;
 
-/*
- * dp[i][j] 表示当前位置的最小路径和，注意循环里面 i 和 j 的初始值
- */
 public class MinimumPathSum {
     public int minPathSum(int[][] grid) {
         int row = grid.length;
