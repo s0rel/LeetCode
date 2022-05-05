@@ -1,46 +1,37 @@
 package com.leetcode.p0076;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class MinimumWindowSubstring {
     public String minWindow(String s, String t) {
-        if (s == null || s.length() == 0 || s.length() < t.length()) {
-            return "";
+        int[] map = new int[128];
+        for (char c : t.toCharArray()) {
+            map[c]++;
         }
 
-        Map<Character, Integer> map = new HashMap<>();
-        for (char c : t.toCharArray()) {
-            map.put(c, map.getOrDefault(c, 0) + 1);
-        }
-        int left = 0;
-        int minLeft = 0;
-        int minLen = s.length() + 1;
-        int count = 0;
-        for (int right = 0; right < s.length(); right++) {
-            if (map.containsKey(s.charAt(right))) {
-                map.put(s.charAt(right), map.get(s.charAt(right)) - 1);
-                if (map.get(s.charAt(right)) >= 0) {
-                    count++;
+        int start = 0;
+        int end = 0;
+        int minStart = 0;
+        int minLen = Integer.MAX_VALUE;
+        int counter = t.length();
+        while (end < s.length()) {
+            char c1 = s.charAt(end);
+            if (map[c1] > 0) {
+                counter--;
+            }
+            map[c1]--;
+            end++;
+            while (counter == 0) {
+                if (minLen > end - start) {
+                    minLen = end - start;
+                    minStart = start;
                 }
-                while (count == t.length()) {
-                    if (right - left + 1 < minLen) {
-                        minLeft = left;
-                        minLen = right - left + 1;
-                    }
-                    if (map.containsKey(s.charAt(left))) {
-                        map.put(s.charAt(left), map.get(s.charAt(left)) + 1);
-                        if (map.get(s.charAt(left)) > 0) {
-                            count--;
-                        }
-                    }
-                    left++;
+                char c2 = s.charAt(start);
+                map[c2]++;
+                if (map[c2] > 0) {
+                    counter++;
                 }
+                start++;
             }
         }
-        if (minLen > s.length()) {
-            return "";
-        }
-        return s.substring(minLeft, minLeft + minLen);
+        return minLen == Integer.MAX_VALUE ? "" : s.substring(minStart, minStart + minLen);
     }
 }
