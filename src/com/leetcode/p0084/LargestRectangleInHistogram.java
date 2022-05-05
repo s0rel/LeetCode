@@ -1,23 +1,20 @@
 package com.leetcode.p0084;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-
 public class LargestRectangleInHistogram {
     public int largestRectangleArea(int[] heights) {
         int len = heights.length;
-        Deque<Integer> stack = new ArrayDeque<>();
-        int maxArea = 0;
+        int res = 0;
+        int[] stack = new int[len + 1];
+        int is = -1;
         for (int i = 0; i <= len; i++) {
-            int h = i == len ? 0 : heights[i];
-            while (!stack.isEmpty() && h < heights[stack.peek()]) {
-                int currHeight = heights[stack.pop()];
-                int prevIndex = stack.isEmpty() ? -1 : stack.peek();
-                int area = currHeight * (i - prevIndex - 1);
-                maxArea = Math.max(maxArea, area);
+            int height = (i == len) ? 0 : heights[i];
+            while (is != -1 && height < heights[stack[is]]) {
+                int hh = heights[stack[is--]];
+                int width = (is == -1) ? i : i  - stack[is] - 1;
+                res = Math.max(res, hh * width);
             }
-            stack.push(i);
+            stack[++is] = i;
         }
-        return maxArea;
+        return res;
     }
 }
