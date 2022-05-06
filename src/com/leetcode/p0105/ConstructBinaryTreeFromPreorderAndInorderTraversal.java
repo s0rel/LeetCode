@@ -2,31 +2,30 @@ package com.leetcode.p0105;
 
 import com.leetcode.structures.TreeNode;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ConstructBinaryTreeFromPreorderAndInorderTraversal {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        if (preorder.length == 0) {
+        Map<Integer, Integer> inMap = new HashMap<Integer, Integer>();
+        for (int i = 0; i < inorder.length; i++) {
+            inMap.put(inorder[i], i);
+        }
+        return buildTree(preorder, 0, preorder.length - 1, 0, inorder.length - 1, inMap);
+    }
+
+    public TreeNode buildTree(int[] preorder, int preStart, int preEnd, int inStart, int inEnd, Map<Integer, Integer> inMap) {
+        if (preStart > preEnd || inStart > inEnd) {
             return null;
         }
 
-        Deque<TreeNode> stack = new ArrayDeque<>();
-        TreeNode root = new TreeNode(preorder[0]), curr = root;
-        for (int i = 1, j = 0; i < preorder.length; i++) {
-            if (curr.val != inorder[j]) {
-                curr.left = new TreeNode(preorder[i]);
-                stack.push(curr);
-                curr = curr.left;
-            } else {
-                j++;
-                while (!stack.isEmpty() && stack.peek().val == inorder[j]) {
-                    curr = stack.pop();
-                    j++;
-                }
-                curr = curr.right = new TreeNode(preorder[i]);
-            }
-        }
+        TreeNode root = new TreeNode(preorder[preStart]);
+        int inRoot = inMap.get(root.val);
+        int numsLeft = inRoot - inStart;
+
+        root.left = buildTree(preorder, preStart + 1, preStart + numsLeft, inStart, inRoot - 1, inMap);
+        root.right = buildTree(preorder, preStart + numsLeft + 1, preEnd, inRoot + 1, inEnd, inMap);
+
         return root;
     }
 }
