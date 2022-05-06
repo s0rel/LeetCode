@@ -11,17 +11,18 @@ public class SameTree_II {
         queue.offer(p);
         queue.offer(q);
         while (!queue.isEmpty()) {
-            TreeNode f = queue.poll();
-            TreeNode s = queue.poll();
-            if (f == null && s == null) {
+            TreeNode node1 = queue.poll();
+            TreeNode node2 = queue.poll();
+            if (node1 == null && node2 == null) {
                 continue;
-            } else if (f == null || s == null || f.val != s.val) {
+            }
+            if (node1 == null || node2 == null || node1.val != node2.val) {
                 return false;
             }
-            queue.offer(f.left);
-            queue.offer(s.left);
-            queue.offer(f.right);
-            queue.offer(s.right);
+            queue.offer(node1.left);
+            queue.offer(node2.left);
+            queue.offer(node1.right);
+            queue.offer(node2.right);
         }
         return true;
     }
