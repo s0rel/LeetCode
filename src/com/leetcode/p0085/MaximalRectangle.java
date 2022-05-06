@@ -5,37 +5,38 @@ import java.util.Deque;
 
 public class MaximalRectangle {
     public int maximalRectangle(char[][] matrix) {
-        if (matrix == null || matrix.length == 0 || matrix[0] == null || matrix[0].length == 0) {
-            return 0;
-        }
-
-        int col = matrix[0].length;
-        int[] h = new int[col + 1];
-        h[col] = 0;
-        int res = 0;
-        for (char[] charArray : matrix) {
-            Deque<Integer> stack = new ArrayDeque<>();
-            for (int i = 0; i < col + 1; i++) {
-                if (i < col) {
-                    if (charArray[i] == '1') {
-                        h[i] += 1;
-                    } else {
-                        h[i] = 0;
-                    }
-                }
-                if (stack.isEmpty() || h[stack.peek()] <= h[i])
-                    stack.push(i);
-                else {
-                    while (!stack.isEmpty() && h[i] < h[stack.peek()]) {
-                        int top = stack.pop();
-                        int area = h[top] * (stack.isEmpty() ? i : (i - stack.peek() - 1));
-                        if (area > res)
-                            res = area;
-                    }
-                    stack.push(i);
+        int n = matrix[0].length;
+        int[] heights = new int[n];
+        int max = 0;
+        for (char[] row : matrix) {
+            for (int i = 0; i < n; i++) {
+                if (row[i] == '1') {
+                    heights[i] += 1;
+                } else {
+                    heights[i] = 0;
                 }
             }
+            max = Math.max(max, maxArea(heights));
         }
-        return res;
+        return max;
+    }
+
+    public int maxArea(int[] heights) {
+        Deque<Integer> stack = new ArrayDeque<>();
+        int len = heights.length;
+        int max = 0;
+        for (int i = 0; i <= len; i++) {
+            int h = (i == len) ? 0 : heights[i];
+            while (!stack.isEmpty() && heights[stack.peek()] > h) {
+                int index = stack.pop();
+                int leftBound = -1;
+                if (!stack.isEmpty()) {
+                    leftBound = stack.peek();
+                }
+                max = Math.max(max, heights[index] * (i - leftBound - 1));
+            }
+            stack.push(i);
+        }
+        return max;
     }
 }
